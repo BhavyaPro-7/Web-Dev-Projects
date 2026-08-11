@@ -1,0 +1,240 @@
+/* ===========================================
+   Premium Custom Cursor — styles
+   Link this AFTER your other CSS files, e.g.:
+   <link rel="stylesheet" href="css/cursor.css">
+   =========================================== */
+
+:root {
+    --cursor-ring-size: 32px;
+    --cursor-dot-size: 6px;
+    --cursor-accent: #e50914;      /* swap for your brand red */
+    --cursor-ink: #ffae0059;
+    --cursor-paper: #250101;
+}
+
+/* Hide the real cursor only when our custom one is active */
+.has-custom-cursor,
+.has-custom-cursor * {
+    cursor: none;
+}
+
+.no-custom-cursor .custom-cursor,
+.no-custom-cursor .cursor-trail {
+    display: none;
+}
+
+/* -------------------------------------------
+   Ring (outer) — this is the element cursor.js
+   translates every frame
+   ------------------------------------------- */
+
+.custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--cursor-ring-size);
+    height: var(--cursor-ring-size);
+    margin-left: calc(var(--cursor-ring-size) / -2);
+    margin-top: calc(var(--cursor-ring-size) / -2);
+
+    border: 1.5px solid var(--cursor-ink);
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    pointer-events: none;
+    z-index: 9999;
+
+    opacity: 0;
+    transition:
+        width 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+        height 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 0.25s ease,
+        background-color 0.25s ease,
+        opacity 0.2s ease;
+}
+
+.custom-cursor.idle {
+    opacity: 0.35;
+}
+
+/* Inner dot, offset by JS via its own transform */
+.cursor-dot-core {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: var(--cursor-dot-size);
+    height: var(--cursor-dot-size);
+    margin-left: calc(var(--cursor-dot-size) / -2);
+    margin-top: calc(var(--cursor-dot-size) / -2);
+
+    background: var(--cursor-ink);
+    border-radius: 50%;
+
+    transition: background-color 0.25s ease, opacity 0.2s ease;
+}
+
+/* Text label, e.g. "View" / "Create" */
+.cursor-label {
+    position: relative;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--cursor-paper);
+
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    white-space: nowrap;
+}
+
+.custom-cursor[data-text]:not([data-text=""]) .cursor-label {
+    opacity: 1;
+    transform: scale(1);
+}
+
+
+/* -------------------------------------------
+   Interactive states
+   ------------------------------------------- */
+
+/* Hovering a card ("View") or the hero CTA ("Create") */
+.custom-cursor[data-state="view"],
+.custom-cursor[data-state="create"] {
+    width: 72px;
+    height: 72px;
+    border-color: transparent;
+    background: var(--cursor-ink);
+}
+
+.custom-cursor[data-state="create"] {
+    background: var(--cursor-accent);
+}
+
+.custom-cursor[data-state="view"] .cursor-dot-core,
+.custom-cursor[data-state="create"] .cursor-dot-core {
+    opacity: 0; /* hide the tiny dot once the ring grows into a pill */
+}
+
+/* Hovering any generic link/button */
+.custom-cursor[data-state="pointer"] {
+    width: 44px;
+    height: 44px;
+    border-color: var(--cursor-accent);
+}
+
+.custom-cursor[data-state="pointer"] .cursor-dot-core {
+    background: var(--cursor-accent);
+    transform: scale(0);
+}
+
+/* Hovering text inputs — thin vertical bar, like a text caret */
+.custom-cursor[data-state="text"] {
+    width: 2px;
+    height: 24px;
+    border-radius: 2px;
+    border-color: var(--cursor-accent);
+    background: var(--cursor-accent);
+}
+
+.custom-cursor[data-state="text"] .cursor-dot-core,
+.custom-cursor[data-state="text"] .cursor-label {
+    opacity: 0;
+}
+
+/* Mouse down — quick squeeze */
+.custom-cursor.click {
+    transition: width 0.12s ease, height 0.12s ease;
+}
+
+.custom-cursor.click:not([data-state="view"]):not([data-state="create"]) {
+    width: 26px;
+    height: 26px;
+}
+
+
+/* -------------------------------------------
+   Trail container + pooled dots + ripple
+   ------------------------------------------- */
+
+.cursor-trail {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9998;
+}
+
+.cursor-trail-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    background: var(--cursor-accent);
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+}
+
+.cursor-trail-dot.fade {
+    animation: cursor-trail-fade 0.6s ease-out forwards;
+}
+
+@keyframes cursor-trail-fade {
+    0% {
+        opacity: 0.55;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.3);
+    }
+}
+
+.cursor-ripple {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    margin-left: -4px;
+    margin-top: -4px;
+    border: 1.5px solid var(--cursor-accent);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: cursor-ripple-expand 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes cursor-ripple-expand {
+    0% {
+        opacity: 0.9;
+        width: 8px;
+        height: 8px;
+        margin-left: -4px;
+        margin-top: -4px;
+    }
+    100% {
+        opacity: 0;
+        width: 48px;
+        height: 48px;
+        margin-left: -24px;
+        margin-top: -24px;
+    }
+}
+
+/* Respect reduced motion: keep the ring, drop the extras */
+@media (prefers-reduced-motion: reduce) {
+
+    .custom-cursor {
+        transition: none;
+    }
+
+    .cursor-trail-dot,
+    .cursor-ripple {
+        display: none;
+    }
+
+}

@@ -1,0 +1,270 @@
+/* Reusable pieces:
+
+Buttons
+
+Cards
+
+Alerts
+
+Tables
+
+Badges
+
+Code blocks
+
+Inputs
+
+If you use the same card on three pages, its CSS lives here. */
+
+/* Cards */
+
+.activity-card{
+    position: relative;
+    overflow: hidden;
+
+    background: var(--clr-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: 20px;
+    padding: 1.5rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+
+    box-shadow: var(--shadow-sm);
+    transition: all .25s ease;
+    transition:
+    transform .35s cubic-bezier(.22,1,.36,1),
+    box-shadow .35s ease,
+    border-color .35s ease;
+}
+
+.activity-card::before{
+    content: "";
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 4px;
+    transition:.25s;
+    background: var(--gradient-primary);
+}
+.activity-card:hover::before{
+    height:6px;
+}
+.activity-card:hover{
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+        transform:
+        translateY(-8px)
+        scale(1.02);
+}
+.activity-card span{
+    width:58px;
+    height:58px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border-radius:18px;
+
+    background:#FFF1F3;
+
+    font-size:1.6rem;
+
+    transition:.35s;
+}
+.activity-card:hover span{
+        transform:
+        rotate(-10deg)
+        scale(1.12);
+}
+.activity-card h3{
+
+    font-size:1.15rem;
+
+    margin-top:.4rem;
+
+    margin-bottom:.2rem;
+
+    font-weight:700;
+}
+
+.activity-card p{
+
+    display:inline-flex;
+
+    width:fit-content;
+
+    padding:.35rem .8rem;
+
+    border-radius:999px;
+
+    background:#FFF1F3;
+
+    color:var(--clr-primary);
+
+    font-weight:600;
+}
+.website span{
+    background:#f7aab6;
+}
+
+.note span{
+    background:#9fbffa;
+}
+
+.project span{
+    background:#a0f8cf;
+}
+.section-header{
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+.recent-grid{
+
+    display:grid;
+
+    gap:1.5rem;
+
+    grid-template-columns:
+    repeat(auto-fill,minmax(300px,1fr));
+}
+
+/* custom cursor  */
+.custom-cursor{
+    position: fixed;
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    background: rgba(248, 164, 164, 0.18);
+
+    border: 1px solid rgba(177,18,38,.25);
+
+    backdrop-filter: blur(10px);
+
+    pointer-events: none;
+
+    transform: translate(-50%,-50%);
+    box-shadow:
+        0 0 30px rgba(177, 18, 39, 0.459);
+    transition:
+        width .25s ease,
+        height .25s ease,
+        transform .08s linear,
+        background .25s ease;
+
+    z-index: 9999;
+}
+.custom-cursor.active{
+
+    width:80px;
+    height:80px;
+
+
+    background:rgba(236, 214, 156, 0.35);
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,210,100,.5);
+
+
+    box-shadow:
+
+    0 0 60px rgba(177,18,38,.22);
+
+}
+.custom-cursor.click{
+
+    
+        transform:
+    translate(-50%,-50%)
+    scale(.75);
+
+
+}
+.custom-cursor::after{
+
+    content: attr(data-text);
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    font-size: 12px;
+
+    color:rgba(0, 0, 0, 0.281);
+
+    white-space: nowrap;
+
+    opacity: 0;
+
+    transition: opacity .2s ease;
+
+}
+.custom-cursor.active::after{
+    opacity: 1;
+}
+activity-card{
+
+    opacity:0;
+
+    transform:translateY(25px);
+
+    animation:fadeUp .6s forwards;
+
+}
+
+.activity-card:nth-child(1){animation-delay:.1s;}
+.activity-card:nth-child(2){animation-delay:.2s;}
+.activity-card:nth-child(3){animation-delay:.3s;}
+.activity-card:nth-child(4){animation-delay:.4s;}
+
+@keyframes fadeUp{
+
+    to{
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
+}
+
+/* cursor Trail  */
+
+.cursor-trail{
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index:9998;
+}
+.cursor-dot{
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background:rgba(177,18,38,.28);
+    transform: translate(-50%,-50%);
+    will-change: transform, opacity;
+    animation: trailfade .6s linear forwards;
+}
+@keyframes trailfade {
+    from{
+        opacity: 1;
+        scale:1;
+    }
+    to{
+        opacity: 0;
+        scale: 0.25;
+    }
+}

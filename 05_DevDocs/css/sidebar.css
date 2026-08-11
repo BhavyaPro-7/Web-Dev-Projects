@@ -1,0 +1,295 @@
+/* ===========================================
+                SIDEBAR
+=========================================== */
+
+.sidebar{
+
+    width:280px;
+    height:calc(100vh - 120px);
+
+    position:sticky;
+    top:96px;
+
+    background:rgba(255,255,255,.82);
+
+    backdrop-filter:blur(22px);
+
+    border:1px solid rgba(255,255,255,.6);
+
+    border-radius:28px;
+
+    padding:22px;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.05),
+        0 4px 12px rgba(0,0,0,.03);
+
+    overflow-y:auto;
+
+}
+
+/* ===========================================
+                NAVIGATION
+=========================================== */
+
+.sidebar nav{
+
+    display:flex;
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+.sidebar ul {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* ===========================================
+            SECTION TITLES
+=========================================== */
+
+.nav-title {
+    list-style: none;
+
+    margin: 18px 0 8px;
+
+    padding-left: 12px;
+
+    font-size: .72rem;
+
+    font-weight: 700;
+
+    letter-spacing: .18em;
+
+    text-transform: uppercase;
+
+    color: var(--clr-text-muted);
+
+    user-select: none;
+
+    cursor: default;
+}
+
+/* ===========================================
+                NAV ITEMS
+=========================================== */
+
+.nav-item {
+
+    list-style: none;
+    
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 10px 12px;
+
+    border-radius: 16px;
+
+    cursor: pointer;
+
+    transition:
+        background .3s ease,
+        transform .3s cubic-bezier(.22,1,.36,1),
+        box-shadow .3s ease;
+    position: relative;
+}
+
+/* ===========================================
+                HOVER
+=========================================== */
+
+.nav-item:not(.active):hover{
+
+    background:#fff;
+
+    transform:translateX(8px);
+
+    box-shadow:
+        0 10px 24px rgba(0,0,0,.05);
+
+}
+
+/* ===========================================
+                ACTIVE
+=========================================== */
+
+.nav-item.active {
+
+
+    color: white;
+
+       background:linear-gradient(
+        135deg,
+        #B11226,
+        #e5a0ac
+    );
+
+    box-shadow:
+        0 14px 30px rgba(177,18,38,.22);
+
+}
+
+.nav-item.active:hover {
+
+    background: var(--gradient-primary);
+
+    transform: translateX(0);
+
+}
+.nav-item.active::before{
+
+    content:"";
+
+    width:4px;
+
+    height:22px;
+
+    border-radius:10px;
+
+    background:white;
+
+    position:absolute;
+
+    left:-8px;
+
+}
+
+/* ===========================================
+                ICON BOX
+=========================================== */
+
+.icon-box {
+
+    width: 42px;
+
+    height: 42px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-shrink: 0;
+
+    border-radius: 14px;
+
+        background:linear-gradient(
+        135deg,
+        #ffffff,
+        #f7f7f7
+    );
+
+    border:1px solid rgba(0,0,0,.04);
+
+    transition:
+        background .3s,
+        transform .3s;
+
+}
+
+
+.nav-item:not(.active):hover .icon-box {
+
+    background: #FFF0F2;
+
+        transform:scale(1.12) rotate(-4deg);
+
+
+}
+
+.nav-item.active .icon-box {
+
+    background: rgba(255,255,255,.16);
+
+}
+
+/* ===========================================
+                SVG
+=========================================== */
+
+.icon-box svg {
+
+    width: 20px;
+
+    height: 20px;
+
+    stroke-width: 2;
+
+    color: var(--clr-text);
+
+    transition:
+        color .3s,
+        transform .3s;
+
+}
+
+.nav-item:not(.active):hover svg {
+
+    color: var(--clr-primary);
+
+}
+
+.nav-item.active svg {
+
+    color: white;
+
+}
+
+/* ===========================================
+                TEXT
+=========================================== */
+
+.nav-item span {
+
+    font-size: .96rem;
+
+    font-weight: 600;
+
+    color: var(--clr-text);
+
+    transition: color .3s;
+
+}
+
+.nav-item:not(.active):hover span {
+
+    color: var(--clr-primary);
+
+}
+
+.nav-item.active span {
+
+    color: white;
+
+}
+
+/* ===========================================
+            SCROLLBAR
+=========================================== */
+
+.sidebar::-webkit-scrollbar {
+
+    width: 6px;
+
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+
+    background: #D7D7D7;
+
+    border-radius: 999px;
+
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+
+    background: #BEBEBE;
+
+}

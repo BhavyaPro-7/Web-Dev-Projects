@@ -1,0 +1,106 @@
+/* ========================================
+   Navbar
+======================================== */
+
+/* Main Navbar */
+.navbar{
+    position: sticky;
+    top: 0;
+    z-index: var(--z-navbar);
+    height:var(--navbar-height);
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    padding-inline: var(--space-xl);
+    background:var(--clr-secondary);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--clr-border);
+}
+/* Left */
+.navbar-left{
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+.Devdocslogo{
+    height: 55px;
+    width: auto;
+    border-radius:50%;
+    cursor: pointer;
+}
+/* Center */
+.navbar-center{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+/* Search */
+.search-box{
+    width: min(500px,100%);
+}
+.search-box input{
+    width: 100%;
+    padding: .8rem 1rem;
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-full);
+    background: var(--clr-surface);
+    color: var(--clr-text);
+    outline: none;
+    transition: var(--transition-normal);
+}
+.search-box input:focus{
+
+    border-color:var(--clr-primary);
+
+    box-shadow:
+    0 0 0 4px rgba(255,165,134,.15);
+
+}
+/* Right */
+.navbar-right{
+    display: flex;
+    align-items: center;
+    gap:var(--space-md);
+}
+/* Buttons */
+.new-btn{
+    color: var(--clr-secondary);
+    border: none;
+    background-color: var(--clr-bg);
+    padding: 0.75rem 1.2rem;
+    border-radius: var(--radius-full);
+    font-weight: var(--fw-semibold);
+    transition: var(--transition-fast);
+}
+.new-btn:hover{
+    transform: translatey(-2px);
+    box-shadow: var(--shadow-md);
+}
+.icon-btn{
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--clr-text);
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+.icon-btn:hover{
+    background: var(--clr-surface);
+}
+/* Profile */
+.profile{
+    background: var(--clr-bg);
+    width:42px;
+    height: 42px;
+    display: flex;
+    align-items:center;
+    justify-content:center;
+    color: var(--clr-secondary);
+    border-radius:50%;
+    cursor: pointer;
+}
+.profile:hover{
+    transform: scale(1.05);
+}

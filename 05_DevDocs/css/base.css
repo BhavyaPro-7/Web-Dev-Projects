@@ -1,0 +1,65 @@
+/* ========================================
+   Base Styles
+======================================== */
+
+/* Body */
+body{
+   background-color: var(--clr-bg);
+   color: var(--clr-text);
+   font-family:"Inter", sans-serif;
+
+   font-size:var(--fs-md);
+   font-weight: var(--fw-regular);
+
+   line-height: 1.6;
+
+   overflow-x: hidden;
+}
+/* Headings*/
+h1,h2,h3,h4,h5,h6{
+    font-weight: var(--fw-bold);
+    line-height: 1.2;
+    color: var(--clr-text);
+}
+/* Paragraphs */
+p{
+   color: var(--clr-text-muted);
+   margin-bottom: var(--space-md);
+}
+/* Links */
+a{
+   color:inherit;
+   transition: color var(--transition-fast);
+}
+/* Images */
+img{
+   display: block;
+}
+/* Buttons */
+button{
+   font-family: inherit;
+}
+/* Code */
+code{
+   font-family: "JetBrains Mono",monospace ;
+   font-size: 0.95rem;
+}
+/* Selection */
+::selection{
+   background-color: var(--clr-primary);
+   color:var(--clr-bg);
+}
+/* Scrollbar */
+::-webkit-scrollbar{
+   width: 10px;
+}
+::-webkit-scrollbar-track{
+   background-color: var(--clr-bg);
+}
+::-webkit-scrollbar-thumb{
+    background: var(--clr-surface-light);
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background: var(--clr-primary);
+}
