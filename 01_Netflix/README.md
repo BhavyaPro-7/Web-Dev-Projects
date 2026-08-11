@@ -4,7 +4,7 @@ A responsive Netflix landing page clone built using HTML and CSS.
 
 ## 🌐 Live Demo
 
-https://bhavyapro-7.github.io/Netflix-Clone/
+https://web-dev-projects-netflix.vercel.app/
 
 ## ✨ Features
 

@@ -1,5 +1,7 @@
 # 🌦️ Weather Forecast
-link - https://bhavyapro-7.github.io/Weather-APP/
+link - https://web-dev-projects-weather.vercel.app/
+
+
 A modern weather application built with **HTML, CSS, and Vanilla JavaScript**. It uses the **Open-Meteo Weather API** to fetch real-time weather information and display it in a clean, responsive interface.
 
 ## ✨ Features
