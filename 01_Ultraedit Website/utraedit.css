@@ -1,0 +1,192 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI';
+    height: 100%;
+    width: 100%;
+}
+:root{
+    --color1:rgb(243, 212, 36);
+    --color2:rgb(245, 245, 245);
+}
+.top{
+    background-color:var(--color1);
+    text-align: center;
+    font-size: 19px;
+    padding: 10px 0px;
+}
+header{
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background-color: var(--color2);
+    margin: 10px auto;
+    padding: 12px 18px;
+    border: 2px solid rgba(0, 0, 0, 0.158);
+    border-radius: 7px;
+    }
+ div ul{
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.navcenter ul{
+    gap:clamp(10px,4vw,40px);
+}
+.navright ul{
+    gap: 30px;
+}
+.navright ul li{
+    display: flex;
+    align-content: center;
+    gap: clamp(10px,4vw,40px);
+}
+.icon{
+    background-color: var(--color1);
+    padding: 10px 13px;
+    border-radius: 5px;
+}
+.lang{
+      padding: 10px 13px;
+
+}
+ul li a{
+    display: flex;
+    align-content: center;
+}
+ ul li:hover{
+       cursor: pointer;
+       color: rgba(0, 0, 0, 0.267);
+}
+
+.heading1{
+    text-align: center;
+    margin: 80px;
+}
+.para1 {
+    text-align: center;
+    color: rgba(0, 0, 0, 0.418);
+    font-size: 17px;
+}
+button a{
+    background-color: var(--color1);
+    padding: 10px;
+}
+.navcenter ul{
+    margin-bottom:0px;
+    margin-top: 27px;
+}
+.icon1{
+    font-size:14px;
+    background-color: var(--color1);
+    border-radius: 10px;
+    border-color: var(--color1); 
+    margin: 5px;
+    padding: 12px 22px; 
+    cursor: pointer; 
+}
+.button1{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.logo2{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.h2{
+    color: rgba(0, 0, 0, 0.479);
+}
+.para2{
+    color: rgba(0, 0, 0, 0.479);
+    font-size: 25px;}
+.donwloadsection{    
+    display: grid;
+    grid-template-columns: repeat(3 ,minmax(250px,1fr));
+    margin: 50px auto;    
+    gap: 30px;
+    padding: 10px;
+    max-width: 1300px;
+}
+.lang{
+    text-align: center;
+    padding: 20px;
+    border: 2px solid rgba(231, 229, 229, 0.253);
+    border-radius: 10px;
+    background-color:var(--color2);
+    display: flex;
+    flex-direction: column;
+}   
+.lang h1{
+    font-size: 20px;
+}
+.button2{
+    background-color: var(--color1);
+    border:2px solid var(--color1);
+    border-radius: 10px;
+    margin: 5px;
+    padding: 10px;  
+    cursor: pointer;
+}
+.s1{
+    font-size: 10px;
+    color: rgba(0, 0, 0, 0.479);
+    margin: 0;
+    padding: 0;
+}   
+@media screen and (max-width:1190px) {
+    .donwloadsection{    
+    display: grid;
+    grid-template-columns: repeat(1 ,minmax(250px,1fr));
+    margin: 50px auto;    
+    gap: 30px;
+    padding: 10px;
+    max-width: 500px;  
+    .top{
+        font-size:15px;
+    }
+}
+.logo{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+.navcenter{
+    flex:2;
+}
+.navright{
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+.navcenter{
+    display: none;
+}
+}
+@media (max-width:375px) {
+    .donwloadsection div p{
+        font-size: 9px;
+    }
+    .top{
+        font-size: 14px;
+    }
+}
+@media (max-width:320px) {
+    .donwloadsection div p{
+        font-size: 6px;
+    }
+    .icon,.lang{
+        padding: 5px 7px;
+    }
+}
+@media (max-width:656px){
+    .top{
+        font-size: 13px;
+    }
+    .para1{
+        font-size:14px;
+    }
+}
